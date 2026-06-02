@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debashish Mohanty - Full Stack Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #053668;
+            --secondary-color: #3498db;
+            --accent-color: #812a21;
+            --text-light: #ffffff;
+            --text-dark: #110c0c;
+            --bg-light: #f8f9fa;
+            --border-color: #ecf0f1;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+.hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #34495e 100%);
+            color: var(--text-light);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+    
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: var(--secondary-color);
+        }
+
+        .hero .subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.8rem 1.8rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--text-light);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--text-light);
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        
+        /* Sections */
+        section {
+            padding: 4rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+         section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+
+        /* About Section */
+        
+        #about {
+            background-color: var(--bg-light);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .about-image img {
+            width: 300px;
+            height: 300px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            object-fit: cover;
+        }
+
+        .about-text h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-badge {
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Projects Section */
+        #projects {
+            background-color: white;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background-color: white;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .project-card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+            border-color: var(--secondary-color);
+        }
+
+        .project-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .project-date {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .project-card p {
+            color: #555;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+         .tech-tag {
+            background-color: #ecf0f1;
+            color: var(--primary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            border: 1px solid var(--secondary-color);
+        }
+
+        /* Skills Section */
+        #skills {
+            background-color: var(--bg-light);
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border-top: 3px solid var(--secondary-color);
+        }
+
+        .skill-category h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-dark);
+        }
+
+        .skill-category li:last-child {
+            border-bottom: none;
+        }
+
+        .skill-category li::before {
+            content: '✓ ';
+            color: var(--secondary-color);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Education Section */
+        #education {
+            background-color: white;
+        }
+
+        .education-item {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .education-item:last-child {
+            border-bottom: none;
+        }
+
+        .education-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item .school {
+            color: var(--secondary-color);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item .details {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #f6fbf8 100%);
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .contact-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-method {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text-light);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+         .contact-method:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .contact-method strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+        }
+
+        .contact-method span {
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem;
+            border-top: 2px solid var(--secondary-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image img {
+                width: 250px;
+                height: 250px;
+            }
+
+            section h2 {
+                font-size: 1.8rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">Debashish Mohanty</div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Debashish Mohanty</h1>
+            <p>Java Full Stack Developer</p>
+            <p class="subtitle">Building scalable web applications and intelligent systems</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                <a href="#projects" class="btn btn-secondary">View My Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-grid">
+                <div class="about-image">
+                      <img src="Debashish Mohanty.jpeg"alt="Debashish Mohanty">
+                        </div>
+                <div class="about-text">
+                    <h3>Full Stack Developer</h3>
+                    <p>
+                        I am a passionate and detail-oriented Java Full Stack Developer with a strong foundation in Core Java, SQL, HTML, CSS, JavaScript, and React.js. I specialize in designing and developing interactive, responsive web applications with clean, efficient backend logic.
+                    </p>
+                    <p>
+                        With hands-on experience in machine learning applications and data-driven systems, I demonstrate expertise in solving complex problems and optimizing real-world solutions. I am eager to contribute to dynamic development teams and continue growing as a full-stack professional in agile environments.
+                    </p>
+                    <div class="skills-list">
+                        <span class="skill-badge">Java</span>
+                        <span class="skill-badge">React.js</span>
+                        <span class="skill-badge">SQL</span>
+                        <span class="skill-badge">JavaScript</span>
+                        <span class="skill-badge">Problem Solving</span>
+                        <span class="skill-badge">Machine Learning</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Smart Farming Using Machine Learning</h3>
+                    <div class="project-date">February 2025</div>
+                    <p>
+                        Developed an intelligent agricultural system using machine learning to optimize crop productivity while reducing resource wastage. Implemented predictive algorithms for weather patterns, soil moisture, and crop health monitoring.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Data Analytics</span>
+                    </div>
+                </div>
+<div class="project-card">
+                    <h3>Restaurant Recommendation System</h3>
+                    <div class="project-date">January 2024</div>
+                    <p>
+                        Engineered a recommendation system using TF-IDF vectorization and Cosine Similarity algorithms to provide personalized restaurant suggestions based on user preferences and cuisine similarities.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">NLP</span>
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Algorithms</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Responsive Web Projects</h3>
+                    <div class="project-date">2024</div>
+                    <p>
+                        Created multiple responsive web projects including landing pages and personal portfolio using modern web technologies with emphasis on user experience, performance, and clean code practices.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">React.js</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2>Technical Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Backend Development</h3>
+                    <ul>
+                        <li>Core Java</li>
+                        <li>SQL & Databases</li>
+                        <li>API Design</li>
+                        <li>Backend Logic</li>
+                        <li>Data Structures</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Frontend Development</h3>
+                    <ul>
+                        <li>React.js</li>
+                        <li>JavaScript ES6+</li>
+                        <li>HTML5 & CSS3</li>
+                        <li>Responsive Design</li>
+                        <li>UI/UX</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Specializations</h3>
+                    <ul>
+                        <li>Machine Learning</li>
+                        <li>Data Analytics</li>
+                        <li>Algorithm Design</li>
+                        <li>Problem Solving</li>
+                        <li>System Optimization</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Tools & Practices</h3>
+                    <ul>
+                        <li>Git & GitHub</li>
+                        <li>Version Control</li>
+                        <li>Agile Methodology</li>
+                        <li>Debugging</li>
+                        <li>Team Collaboration</li>
+                    </ul>
+                </div>
+                 </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+     <section id="education">
+  <div class="reveal">
+    <span class="section-label">// background</span>
+    <h2 class="section-title">Education &amp; <span>Certifications</span></h2>
+  </div>
+  <div class="timeline reveal">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <div class="tl-meta">
+          <h3>B.Tech – Computer Science & Engineering</h3>
+          <span class="tl-date">2021 – Apr 2025</span>
+        </div>
+        <div class="tl-school">Gandhi Institute for Technological Advancement, Bengaluru</div>
+        <div class="tl-detail">CGPA: <strong style="color:var(--accent)">8.5</strong> · Focused on algorithms, system design, and software engineering</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <div class="tl-meta">
+          <h3>Java Full Stack Development</h3>
+          <span class="tl-date">May – Nov 2025</span>
+        </div>
+        <div class="tl-school">Besant Technologies</div>
+        <div class="tl-detail">Comprehensive training in Java backend, React frontend, SQL databases, and agile practices</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <div class="tl-meta">
+          <h3>Web Development Course</h3>
+          <span class="tl-date">2024</span>
+        </div>
+        <div class="tl-school">Oasis Info Byte</div>
+        <div class="tl-detail">Built responsive web projects and interactive UI components</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <div class="tl-meta">
+          <h3>Getting Started with Git & GitHub</h3>
+          <span class="tl-date">2023</span>
+        </div>
+        <div class="tl-school">Coursera (IBM)</div>
+        <div class="tl-detail">Version control, branching strategies, repository management, and team collaboration</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="reveal">
+    <span class="section-label">// let's connect</span>
+    <h2 class="section-title">Get In <span>Touch</span></h2>
+  </div>
+  <div class="contact-wrap reveal">
+    <div>
+      <div class="contact-text">
+        <p>I'm actively looking for new opportunities. Whether you have a project idea, a job offer, or just want to say hello — my inbox is always open!</p>
+      </div>
+      <div class="contact-links">
+        <a href="tel:+918093445414" class="contact-link">
+          <span class="contact-link-icon">📞</span>
+          <div class="contact-link-info"><strong>Phone</strong><span>+91 8093 445414</span></div>
+        </a>
+        <a href="mailto:debashish8018125224@gmail.com" class="contact-link">
+          <span class="contact-link-icon">✉️</span>
+          <div class="contact-link-info"><strong>Email</strong><span>debashish8018125224@gmail.com</span></div>
+        </a>
+        <a href="https://linkedin.com/in/debashishmohanty2003" target="_blank" class="contact-link">
+          <span class="contact-link-icon">💼</span>
+          <div class="contact-link-info"><strong>LinkedIn</strong><span>linkedin.com/in/debashishmohanty2003</span></div>
+        </a>
+      </div>
+    </div>
+    <div class="contact-form-side">
+      <h3>// send a message</h3>
+      <div class="input-group">
+        <label>Name</label>
+        <input type="text" placeholder="Your name">
+      </div>
+      <div class="input-group">
+        <label>Email</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+      <div class="input-group">
+        <label>Message</label>
+        <textarea rows="4" placeholder="What's on your mind?"></textarea>
+      </div>
+      <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="alert('Message sent! (Connect to a backend to activate)')">Send Message ✉️</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Designed &amp; built by <span>Debashish Mohanty</span> · 2025 · All rights reserved</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => obs.observe(el));
+
+  // Animate skill bars when section visible
+  const skillObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.skill-bar').forEach(bar => {
+          bar.style.width = bar.dataset.w + '%';
+        });
+        skillObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.skill-box').forEach(b => skillObs.observe(b));
+
+  // Nav shrink on scroll
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.padding = scrollY > 60 ? '.7rem 4rem' : '1.1rem 4rem';
+  });
+
+  // Typed cursor effect in hero tag
+  const tag = document.querySelector('.hero-tag');
+  const msgs = ['Available for opportunities', 'Open to full-time roles', 'Ready to build great things'];
+  let mi = 0, ci = 0, deleting = false;
+  function type() {
+    const cur = msgs[mi];
+    if (!deleting) {
+      tag.textContent = '▶️ ' + cur.slice(0, ++ci);
+      if (ci === cur.length) { deleting = true; setTimeout(type, 2000); return; }
+    } else {
+      tag.textContent = '▶️ ' + cur.slice(0, --ci);
+      if (ci === 0) { deleting = false; mi = (mi+1) % msgs.length; }
+    }
+    setTimeout(type, deleting ? 40 : 80);
+  }
+  setTimeout(type, 1500);
+</script>
+</body>
+</html>
